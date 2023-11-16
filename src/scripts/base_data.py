@@ -14,8 +14,6 @@ faker = Faker()
 psycopg2.extras.register_uuid()
 
 districts_list = [['d1', 'd2'], ['d2', 'd3'], ['d1', 'd3']]
-districts_for_order = ['d1', 'd2', 'd3']
-order_names = ['Scooter', 'Bicycle', 'Bike']
 
 couriers_dct = {}
 
