@@ -1,6 +1,6 @@
 import datetime
 
-from sqlalchemy import Column, String, ForeignKey, UUID, Integer, DateTime, Enum
+from sqlalchemy import Column, String, ForeignKey, UUID, DateTime, Enum
 
 from common.db.base_model import Base
 from common.enums.status_order import StatusOrder

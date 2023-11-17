@@ -17,13 +17,14 @@ SessionLocal = async_sessionmaker(
     class_=AsyncSession,
     bind=engine,
 )
+
+
 async def init_db():
     async with engine.begin() as conn:
         # await conn.run_sync(SQLModel.metadata.drop_all)
         await conn.run_sync(metadata.create_all)
 
+
 async def get_pg_session() -> AsyncSession:
     async with SessionLocal() as session:
         yield session
-
-

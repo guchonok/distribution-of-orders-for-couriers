@@ -49,7 +49,7 @@ def generate_orders():
             cur.execute(
                 f"INSERT INTO orders (sid, name, district, status, courier_sid, created_at) "
                 f"VALUES ('{order_sid}', '{faker.word()}', '{choice(districts)}', 'in_progress', '{courier_sid}', "
-                f"'{datetime.datetime.now() - datetime.timedelta(days=random.randint(1, 3))}');"
+                f"'{datetime.datetime.now() - datetime.timedelta(hours=random.randint(1, 10))}');"
             )
 
             # add order_sid to courier

@@ -18,7 +18,7 @@ services:
       context: .
       dockerfile: Dockerfile
     command:
-#      bash src/pre-start.sh
       python3 src/main.py
+      bash src/pre-start.sh
     ports:
       - "8000:8000"

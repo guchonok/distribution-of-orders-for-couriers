@@ -1,7 +1,7 @@
 from typing import List
 from uuid import UUID
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 from models import Courier
 from models.courier.repository.courier import courier_repository
@@ -17,6 +17,11 @@ router = APIRouter()
 async def get_courier(session: PGSession, sid: UUID):
     """This endpoint get courier by sid and return full data about him and his orders"""
     courier = await courier_repository.get(session, sid)
+    if not courier:
+        raise HTTPException(
+            status_code=404,
+            detail=f"courier with sid {sid} not exist",
+        )
     avg_order_complete_time, avg_day_orders = await calculate_average_order_metrics(session,
                                                                                     courier_sid=sid)  # func for get avg compleat order time
     courier.avg_order_complete_time = avg_order_complete_time  # add avg time to hybrid_property model courier
@@ -28,6 +33,11 @@ async def get_courier(session: PGSession, sid: UUID):
 async def get_couriers(session: PGSession):
     """Get all couriers registered in system"""
     couriers = await courier_repository.get_all(session)
+    if not couriers:
+        raise HTTPException(
+            status_code=404,
+            detail=f"courier`s list is empty",
+        )
     return couriers
 
 

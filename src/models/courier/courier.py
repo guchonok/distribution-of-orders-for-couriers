@@ -1,6 +1,6 @@
 import datetime
 
-from sqlalchemy import Column, String, UUID, ForeignKey, ARRAY, DateTime
+from sqlalchemy import Column, String, UUID, ForeignKey, ARRAY
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import relationship
 
